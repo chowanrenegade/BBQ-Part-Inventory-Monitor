@@ -165,19 +165,19 @@ class InventoryMonitorApp:
                 new_history[key] = current_qty
 
                 if not in_spreadsheet:
-                    status = "❌ Not Found in Spreadsheet"
+                    status = "Not Found in Spreadsheet"
                     tag = "alert_zero"
                 elif current_qty == 0:
-                    status = "⚠️ OUT OF STOCK (0)"
+                    status = "OUT OF STOCK (0)"
                     tag = "alert_zero"
                     zeros_triggered.append(original_part)
                 elif previous_qty is not None and current_qty < previous_qty:
                     dropped_by = previous_qty - current_qty
-                    status = f"📉 Dropped by {dropped_by} (Was {previous_qty})"
+                    status = f"Dropped by {dropped_by} (Was {previous_qty})"
                     tag = "alert_drop"
                     alerts_triggered.append(f"{original_part}: {previous_qty} -> {current_qty}")
                 elif previous_qty is not None and current_qty > previous_qty:
-                    status = f"📈 Stock Increased (Was {previous_qty})"
+                    status = f"Stock Increased (Was {previous_qty})"
                     tag = "normal"
                 else:
                     status = "No Change"
